@@ -17,8 +17,7 @@ public class StaffServiceImpl implements StaffService {
         if (staff.getId() == null) {
             staffRepo.save(staff);
         } else {
-            Staff staffUpdate =
-                    staffRepo.findById(staff.getId()).get();
+            Staff staffUpdate = staffRepo.findById(staff.getId()).get();
             staffUpdate.setName(staff.getName());
             staffUpdate.setDesgn(staff.getDesgn());
             staffUpdate.setEmailId(staff.getEmailId());
