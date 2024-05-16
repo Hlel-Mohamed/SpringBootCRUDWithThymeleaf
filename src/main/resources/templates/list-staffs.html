@@ -35,15 +35,15 @@
                             <tbody>
                             <tr th:each="staff : ${staffs}">
                                 <td th:text="${staff.name}"></td>
-                                <td th:text="${staff.desgn}"></td>
-                                <td th:text="${staff.emailId}"></td>
+                                <td th:text="${staff.getDesignation}"></td>
+                                <td th:text="${staff.getEmail}"></td>
                                 <td>
                                     <a th:href="@{/staff-update/{id}(id=${staff.id})}" class="btn btn-primary">
                                         <i class="fas fa-user-edit ml-2"></i>
                                     </a>
                                 </td>
                                 <td>
-                                    <a th:href="@{/staff-delete/{id}(id=${staff.id})}" class="btn btn-primary">
+                                    <a th:href="@{/staff-delete/{id}(id=${staff.id})}" class="btn btn-danger">
                                         <i class="fas fa-user-times ml-2"></i>
                                     </a>
                                 </td>

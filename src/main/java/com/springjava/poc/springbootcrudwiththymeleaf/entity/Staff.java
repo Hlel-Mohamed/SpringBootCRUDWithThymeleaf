@@ -13,6 +13,6 @@ public class Staff {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
-    private String desgn;
-    private String emailId;
+    private String designation;
+    private String email;
 }

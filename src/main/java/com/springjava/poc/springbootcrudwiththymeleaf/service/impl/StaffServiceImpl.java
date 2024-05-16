@@ -1,7 +1,7 @@
 package com.springjava.poc.springbootcrudwiththymeleaf.service.impl;
 
 import com.springjava.poc.springbootcrudwiththymeleaf.entity.Staff;
-import com.springjava.poc.springbootcrudwiththymeleaf.repository.StaffRepo;
+import com.springjava.poc.springbootcrudwiththymeleaf.repository.StaffRepository;
 import com.springjava.poc.springbootcrudwiththymeleaf.service.StaffService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,29 +11,39 @@ import java.util.List;
 @Service
 public class StaffServiceImpl implements StaffService {
     @Autowired
-    StaffRepo staffRepo;
+    StaffRepository staffRepository;
+
     @Override
-    public void save(Staff staff) {
+    public Staff save(Staff staff) {
         if (staff.getId() == null) {
-            staffRepo.save(staff);
+            staffRepository.save(staff);
         } else {
-            Staff staffUpdate = staffRepo.findById(staff.getId()).get();
+            Staff staffUpdate = staffRepository.findById(staff.getId()).get();
             staffUpdate.setName(staff.getName());
-            staffUpdate.setDesgn(staff.getDesgn());
-            staffUpdate.setEmailId(staff.getEmailId());
-            staffRepo.save(staffUpdate);
+            staffUpdate.setDesignation(staff.getDesignation());
+            staffUpdate.setEmail(staff.getEmail());
+            staffRepository.save(staffUpdate);
         }
+        return staff;
     }
+
     @Override
     public List<Staff> getAll() {
-        return staffRepo.findAll();
+        return staffRepository.findAll();
     }
+
     @Override
     public Staff getById(Integer id) {
-        return staffRepo.findById(id).get();
+        return staffRepository.findById(id).get();
     }
+
+    @Override
+    public Staff getByEmail(String email) {
+        return staffRepository.findByEmail(email);
+    }
+
     @Override
     public void delete(Staff staff) {
-        staffRepo.delete(staff);
+        staffRepository.delete(staff);
     }
 }
